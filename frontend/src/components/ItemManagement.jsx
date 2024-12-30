@@ -8,7 +8,8 @@ const ItemManagement = () => {
 
   useEffect(() => {
     fetchItems();
-  }, [fetchItems]); // Fetch items when component is mounted
+  }, []); // Ensure that this only triggers on component mount
+  
 
   return (
     <Container maxWidth="md" style={{ marginTop: '30px' }}>

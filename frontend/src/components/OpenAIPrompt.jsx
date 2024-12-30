@@ -24,7 +24,7 @@ const OpenAIPrompt = () => {
 
     setLoading(true);
     try {
-      const result = await axios.post('http://localhost:6001/api/v1/prompt/generatePrompt', { prompt });
+      const result = await axios.post(`${process.env.REACT_APP_API_URL}/prompt/generatePrompt`, { prompt });
       const sanitizedResponse = sanitizeResponse(result.data.data);
       setResponse(sanitizedResponse);
       
