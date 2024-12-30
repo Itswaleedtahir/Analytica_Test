@@ -23,7 +23,7 @@ export const PromptProvider = ({ children }) => {
   // Fetch items from the backend
   const fetchItems = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_API_URL}/items/getAllItems`);
+      const response = await axios.get('/api/v1/items/getAllItems');
       setItems(response.data.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -33,14 +33,14 @@ export const PromptProvider = ({ children }) => {
   // Add new item
   const addItem = async () => {
     if (!newItem.name || !newItem.description) return; // Check for empty inputs
-    await axios.post(`${process.env.REACT_APP_API_URL}/items/createItem`, newItem);
+    await axios.post('api/v1/items/createItem', newItem);
     setNewItem({ name: '', description: '' });
     fetchItems();
   };
 
   // Delete item
   const deleteItem = async (id) => {
-    await axios.delete(`${process.env.REACT_APP_API_URL}/items/deleteItem/${id}`);
+    await axios.delete(`/api/v1/items/deleteItem/${id}`);
     fetchItems();
   };
 
